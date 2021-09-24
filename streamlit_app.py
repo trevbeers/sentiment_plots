@@ -11,7 +11,7 @@ class Sentiment:
             'sadness': 'FOMO',
             'joy': 'excitement',
             'anger': 'action',
-            'fear': 'intrigue'
+            'fear': 'curiosity'
         }
 
     def analyze(self):
@@ -35,7 +35,7 @@ class Sentiment:
                 if emotion == 'love':  # add this score to the 'excitement' score
                     scores['excitement'] += score
                 elif emotion == 'surprise':  # add this score to the 'intrigue' score
-                    scores['intrigue'] += score
+                    scores['curiosity'] += score
 
         return scores
 
@@ -48,7 +48,17 @@ sentence = st.text_input('Input text')
 if sentence:
     emotion_scores = Sentiment(sentence).analyze()
     fig = px.bar(x=list(emotion_scores.values()), y=list(emotion_scores.keys()), orientation='h',
-                 title=f'Text ⟶ "{sentence}"',
+                 title=f'Input text ⟶ "{sentence}"',
                  labels={'x': '', 'y': ''})
     fig.update_xaxes(range=[0, 1])
     st.write(fig)
+
+    st.header('How was this done?')
+    st.write("""This classification was done using what is called a Transformer model. These models are trained on large 
+    amounts of raw text — this initial training results in the models developing a probabilistic understanding of the 
+    language the training data is written in. A model is then fine-tuned for specific tasks using human-labeled data, 
+    emotion classification in this case.""")
+
+    st.header('What emotions did we look at?')
+    st.write("""Curiosity, action, excitement and FOMO. Does the message intrigue people? Inspire them to act? Get them
+    interested? Invoke FOMO? This model can tell you.""")
