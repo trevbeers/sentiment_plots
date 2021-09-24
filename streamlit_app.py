@@ -56,8 +56,8 @@ if sentence:
     st.header('How was this done?')
     st.write("""This classification was done using what is called a Transformer model. These models are trained on large 
     amounts of raw text — this initial training results in the models developing a probabilistic understanding of the 
-    language the training data is written in. A model is then fine-tuned for specific tasks, emotion classification in 
-    this case, using human-labeled data.""")
+    language the training data is written in. A model is then fine-tuned for a specific task (emotion classification in 
+    this case) using human-labeled data.""")
 
     st.header('What emotions did we look at?')
     st.write("""Curiosity, action, excitement and FOMO. Does the message intrigue people? Inspire them to act? Get them
